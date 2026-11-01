@@ -1,0 +1,29 @@
+# Dependencies (โฟลเดอร์ไลบรารีที่หนักและติดตั้งใหม่ได้)
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build Outputs (ไฟล์ที่ได้จากการแปลงโค้ดเพื่อใช้งานจริง)
+dist/
+build/
+client/dist/
+server/dist/
+
+# Environment Variables (ไฟล์เก็บรหัสผ่านและค่าติดตั้งฐานข้อมูล)
+.env
+.env.*
+!.env.example
+
+# Logs & OS Files
+npm-debug.log*
+*.log
+.DS_Store
+Thumbs.db
+
+# AI IDE & Editor Data
+.agents/
+.windsurf/
+.cursor/
+.vscode/
+.claude/
+skills-lock.json

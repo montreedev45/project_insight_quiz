@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: insightquiz_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: montree.dev45
+      POSTGRES_DB: insightquiz_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
