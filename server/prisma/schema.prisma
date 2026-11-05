@@ -41,7 +41,7 @@ model User {
   created_at    DateTime @default(now())
 
   subjects      Subject[]
-  enrollments   ClassEnrollment[]
+  enrollments   ClassroomEnrollment[]
   attempts      QuizAttempt[]
 }
 
@@ -73,20 +73,22 @@ model Classroom {
   code          String   @unique
 
   subject       Subject           @relation(fields: [subject_id], references: [id], onDelete: Cascade)
-  enrollments   ClassEnrollment[]
+  enrollments   ClassroomEnrollment[]
   assignments   QuizAssignment[]
+
+  @@unique([name, subject_id])
 }
 
-model ClassEnrollment {
+model ClassroomEnrollment {
   id            String   @id @default(uuid())
-  class_id      String
+  classroom_id  String
   student_id    String
   joined_at     DateTime @default(now())
 
-  classroom     Classroom @relation(fields: [class_id], references: [id], onDelete: Cascade)
+  classroom     Classroom @relation(fields: [classroom_id], references: [id], onDelete: Cascade)
   student       User      @relation(fields: [student_id], references: [id], onDelete: Cascade)
   
-  @@unique([class_id, student_id])
+  @@unique([classroom_id, student_id])
 }
 
 model Quiz {
@@ -128,13 +130,13 @@ model Option {
 model QuizAssignment {
   id                 String   @id @default(uuid())
   quiz_id            String
-  class_id           String
+  classroom_id       String
   time_limit_minutes Int?
   deadline           DateTime?
   status             AssignmentStatus @default(PUBLISHED)
 
   quiz               Quiz          @relation(fields: [quiz_id], references: [id], onDelete: Cascade)
-  classroom          Classroom     @relation(fields: [class_id], references: [id], onDelete: Cascade)
+  classroom          Classroom     @relation(fields: [classroom_id], references: [id], onDelete: Cascade)
   attempts           QuizAttempt[]
 }
 
