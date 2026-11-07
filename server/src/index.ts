@@ -5,6 +5,8 @@ import authRoutes from './routes/auth.routes.js'
 import subjectRoutes from './routes/subject.routes.js'
 import classroomRoutes from './routes/classroom.routes.js'
 import quizRoutes from './routes/quiz.routes.js'
+import assignmentRoutes from './routes/assignment.routes.js'
+import attemptRoutes from './routes/attempt.routes.js'
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -16,6 +18,8 @@ app.use('/api/auth', authRoutes)
 app.use('/api/subject', subjectRoutes)
 app.use('/api/classroom', classroomRoutes)
 app.use('/api/quiz', quizRoutes)
+app.use('/api/assignment', assignmentRoutes)
+app.use('/api/attempt', attemptRoutes)
 
 app.get('/api/health', (req: Request, res: Response) => {
     res.json({

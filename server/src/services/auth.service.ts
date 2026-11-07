@@ -32,7 +32,6 @@ export const register = async (email: string, password: string, firstName: strin
     const password_hash = await bcrypt.hash(password, saltRounds);
 
     const user = await prisma.user.create({ data: { email, password_hash: password_hash, first_name: firstName, last_name: lastName, role } })
-
     if (!user) {
         throw new Error("Register failed")
     }
