@@ -9,4 +9,6 @@ const router = Router()
 router.post('/quiz-attempt', verifyToken, validate(attemptValidate.attemptSchema), attemptController.quizAttempt)
 router.post('/response', verifyToken, validate(attemptValidate.response), attemptController.response)
 
+router.post('/quiz-attempt/submit', verifyToken, validate(attemptValidate.attemptSubmitSchema), attemptController.quizAttemptSubmit)
+
 export default router

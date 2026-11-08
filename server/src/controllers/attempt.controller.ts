@@ -23,3 +23,21 @@ export const response = async (req: AuthRequest, res: Response): Promise<void> =
         res.status(500).json({ success: false, message: error.message })
     }
 }
+
+export const quizAttemptSubmit = async (req: AuthRequest, res: Response): Promise<void> => {
+    try {
+        const { attemptId, studentId, answer } = req.body;
+
+        const data = await attemptService.quizAttemptSubmit(attemptId, studentId, answer);
+
+        res.status(200).json({
+            success: true,
+            data
+        });
+    } catch (error: any) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+}

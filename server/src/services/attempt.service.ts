@@ -1,17 +1,23 @@
 import { prisma } from "../lib/prisma.js";
 import { AttemptStatus } from "@prisma/client";
 
-export const quizAttempt = async (assignmentId: string, studentId: string, startTime: Date, endTime: Date, status: AttemptStatus, totalScore: number) => {
+export const quizAttempt = async (assignmentId: string, studentId: string, startTime: Date, endTime?: Date | string | null, status?: AttemptStatus, totalScore?: number) => {
     const existingAssignment = await prisma.quizAssignment.findUnique({ where: { id: assignmentId } })
     if (!existingAssignment) throw new Error("Quiz assignment not found")
 
     const existingStudent = await prisma.user.findUnique({ where: { id: studentId } })
     if (!existingStudent) throw new Error("Student not found")
 
-    if (endTime <= startTime) throw new Error("End time or Start time is invalid")
-
-    const quizAttempt = await prisma.quizAttempt.create({ data: { assignment_id: assignmentId, student_id: studentId, start_time: startTime, end_time: endTime, status, total_score: totalScore } })
-    if (!quizAttempt) throw new Error("Quiz attempt failed")
+    const quizAttempt = await prisma.quizAttempt.create({
+        data: {
+            assignment_id: assignmentId,
+            student_id: studentId,
+            start_time: startTime,
+            end_time: endTime ? new Date(endTime) : null,
+            status: status || AttemptStatus.ONGOING,
+            total_score: totalScore ?? 0
+        }
+    })
 
     return quizAttempt;
 }
@@ -31,3 +37,74 @@ export const response = async (attemptId: string, questionId: string, selectedOp
 
     return response;
 }
+
+export const quizAttemptSubmit = async (
+    attemptId: string,
+    studentId: string,
+    answers: Array<{ questionId: string, selectedOptionId: string }>
+) => {
+    const existingAttempt = await prisma.quizAttempt.findUnique({
+        where: { id: attemptId }
+    });
+    if (!existingAttempt) throw new Error("Quiz attempt not found");
+
+    const existingStudent = await prisma.user.findUnique({
+        where: { id: studentId }
+    });
+    if (!existingStudent) throw new Error("Student not found");
+
+    let totalScore = 0;
+    const responseData: Array<{
+        attempt_id: string;
+        question_id: string;
+        selected_option_id: string;
+        is_correct: boolean;
+        score_earned: number;
+    }> = [];
+
+    // วนลูปเช็คคำตอบทีละข้อด้วยการ Query หาคำถามและตัวเลือกโดยตรง
+    for (const ans of answers) {
+        const question = await prisma.question.findUnique({
+            where: { id: ans.questionId },
+            include: { options: true }
+        });
+
+        if (!question) continue;
+
+        const selectedOpt = question.options.find(opt => opt.id === ans.selectedOptionId);
+        const isCorrect = selectedOpt ? selectedOpt.is_correct : false;
+        const scoreEarned = isCorrect ? question.point : 0;
+
+        totalScore += scoreEarned;
+
+        responseData.push({
+            attempt_id: attemptId,
+            question_id: ans.questionId,
+            selected_option_id: ans.selectedOptionId,
+            is_correct: isCorrect,
+            score_earned: scoreEarned
+        });
+    }
+
+    // บันทึกข้อมูลด้วย Transaction
+    const result = await prisma.$transaction(async (tx) => {
+        if (responseData.length > 0) {
+            await tx.response.createMany({
+                data: responseData
+            });
+        }
+
+        const updatedAttempt = await tx.quizAttempt.update({
+            where: { id: attemptId },
+            data: {
+                end_time: new Date(),
+                status: AttemptStatus.COMPLETED,
+                total_score: totalScore
+            }
+        });
+
+        return updatedAttempt;
+    });
+
+    return result;
+};
