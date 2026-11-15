@@ -7,8 +7,8 @@ export default function Login() {
         <>
             <div className="flex flex-col justify-center items-center">
                 <NavbarMain />
-                <div className="flex items-center gap-40 py-30">
-                    <img src={hero3} alt="login image" className="max-w-[310px] max-h-[330px]" />
+                <div className="flex flex-row items-center md:gap-20 lg:gap-40 py-30 transition-all duration-300">
+                    <img src={hero3} alt="login image" className="hidden md:block max-w-[310px] max-h-[330px]" />
                     <form className="flex flex-col min-w-[250px] gap-2">
                         <div className="flex flex-col gap-2">
                             <label htmlFor="Email" className="font-semibold text-lg">Email</label>
