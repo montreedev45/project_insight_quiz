@@ -1,4 +1,4 @@
-import chart from '../../assets/chart.svg'
+import chart from '../../../assets/chart.svg'
 
 export default function DashboardTeacher() {
     return (
