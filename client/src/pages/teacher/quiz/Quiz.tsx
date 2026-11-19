@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 export default function QuizLibrary() {
     const navigate = useNavigate()
     const handleCreate = () => {
-        navigate("/teacher/quiz-library/create")
+        navigate("/teacher/quiz-library/010203040506")
     }
 
     return (
@@ -15,10 +15,10 @@ export default function QuizLibrary() {
                     <div className="flex gap-5">
                         <div className="relative flex items-center">
                             <Icon icon="akar-icons:search" width={20} height={20} className="absolute left-2 text-gray-300" />
-                            <input type="text" placeholder="Search..." className="bg-secondary min-w-[300px] w-full rounded-4xl py-1.5 px-10 font-semibold text-gray-400 outline-0 border-2 border-gray-300" />
+                            <input type="text" placeholder="Search..." className="bg-secondary min-w-[300px] w-full rounded-4xl py-1 px-10 font-semibold text-gray-400 outline-0 border-2 border-gray-300" />
                         </div>
                         <div className="bg-accent text-secontext px-2 py-1.5 rounded-lg caret-transparent">
-                            <button className="font-semibold flex items-center px-4"><Icon icon="mdi:plus" className="font-semibold" width={30} height={30} />Create Quiz</button>
+                            <button className="font-semibold flex items-center px-4"><Icon icon="mdi:plus" className="font-semibold" width={20} height={20} />Create Quiz</button>
                         </div>
                     </div>
                 </div>

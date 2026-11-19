@@ -19,8 +19,8 @@ export default function SubjectsDetailStudents() {
                             <td className="flex items-center gap-3  border-subtext ps-5 py-5">
                                 <img src={account} alt="profile" className="border rounded-full border-subtext" width={40} height={40} />
                                 <div className="flex flex-col text-sm pe-5 font-semibold">
-                                    <p>Mr.montree.dev</p>
-                                    <p className="font-normal">montree.dev45</p>
+                                    <p>Mr.montree.chanuanklang</p>
+                                    <p className="font-normal">abc@gmail.com</p>
                                 </div>
                             </td>
                             <td className="border border-subtext ps-5 py-5">MATH41</td>
@@ -32,8 +32,8 @@ export default function SubjectsDetailStudents() {
                             <td className="flex items-center gap-3  border-subtext ps-5 py-5">
                                 <img src={account} alt="profile" className="border rounded-full border-subtext" width={40} height={40} />
                                 <div className="flex flex-col text-sm pe-5 font-semibold">
-                                    <p>Mr.montree.dev</p>
-                                    <p className="font-normal">montree.dev45</p>
+                                    <p>Mr.montree.chanuanklang</p>
+                                    <p className="font-normal">abc@gmail.com</p>
                                 </div>
                             </td>
                             <td className="border border-subtext ps-5 py-5">MATH41</td>
