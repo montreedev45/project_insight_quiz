@@ -6,9 +6,9 @@ export default function Analytics() {
     return (
         <>
             <div className="flex flex-col gap-10">
-                <div className="flex justify-between">
+                <div className="flex flex-col md:flex-row gap-5 justify-between">
                     <p className="text-xl font-semibold">Analytics</p>
-                    <div className="flex gap-10">
+                    <div className="flex gap-5 lg:gap-10 flex-wrap lg:flex-nowrap justify-end">
                         <div className="bg-accent text-heading text-secontext py-1.5 px-6 rounded-lg caret-transparent">
                             <select name="menu" id="" className="bg-accent outline-0 border-0 px-4 font-semibold">
                                 <option value="" className="" selected>All</option>
@@ -31,7 +31,7 @@ export default function Analytics() {
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-between flex-wrap lg:px-20 gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 place-items-center gap-15 max-h-[600px] p-5 overflow-auto">
                     <div className="flex gap-3 flex-col min-w-[200px] max-w-[250px] w-full font-semibold border border-l-6 px-4 py-4 border-gray-400 rounded-xl">
                         <span className="flex items-center justify-between">Average Score <Icon icon="mdi:star" className="text-yellow-300" width={25} /></span>
                         <span className="text-2xl">20</span>
@@ -48,13 +48,13 @@ export default function Analytics() {
                 <div className="flex flex-col gap-5">
                     <span className="text-xl font-semibold">Topic by Average Score (%)</span>
                     <div className="w-full flex justify-start">
-                        <img src={barChart} alt="Bar Chart" width={700} height={700} />
+                        <img src={barChart} alt="Bar Chart" width={650} height={650} />
                     </div>
                 </div>
                 <div className="flex flex-col gap-5">
                     <span className="text-xl font-semibold">Students Needing Support</span>
-                    <div className="min-w-[1000px] overflow-x-auto">
-                        <table className="w-full border-collapse">
+                    <div className="w-full overflow-x-auto max-w-full">
+                        <table className="w-full min-w-[700px]">
                             <thead>
                                 <tr className="border border-secondary bg-subtext text-left">
                                     <th className="border border-secondary px-10 py-3 text-center">Students</th>
@@ -66,7 +66,7 @@ export default function Analytics() {
                             </thead>
                             <tbody>
                                 <tr className="border border-subtext">
-                                    <td className="flex items-center gap-3  border-subtext ps-5 py-5">
+                                    <td className="flex items-center gap-3  border-subtext ps-5 py-5  min-w-[300px]">
                                         <img src={account} alt="profile" className="border rounded-full border-subtext" width={40} height={40} />
                                         <div className="flex flex-col text-sm pe-5 font-semibold">
                                             <p>Mr.montree.chanuanklang</p>

@@ -3,8 +3,8 @@ import { Icon } from "@iconify/react"
 export default function SubjectsDetailClasses() {
     return (
         <>
-            <div className="min-w-[800px]">
-                <table className="w-full ">
+            <div className="w-full overflow-x-auto max-w-[800px]">
+                <table className="w-full min-w-[600px]">
                     <thead>
                         <tr className="border border-secondary bg-subtext">
                             <th className="border border-secondary px-10 py-2">Class</th>

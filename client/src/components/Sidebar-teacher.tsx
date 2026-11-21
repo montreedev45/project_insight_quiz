@@ -1,24 +1,83 @@
-import { Link, NavLink } from "react-router-dom"
-import { Icon } from "@iconify/react"
+import { Link, NavLink } from "react-router-dom";
+import { Icon } from "@iconify/react";
 
-export default function SidebarTeacher() {
+interface SidebarTeacherProps {
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+const navClass = ({ isActive }: { isActive: boolean }) =>
+    `px-4 transition-colors flex items-center gap-4 hover:bg-accent ${isActive ? "bg-accent" : ""
+    } py-2 font-semibold text-lg rounded-md`;
+
+export default function SidebarTeacher({ isOpen, onClose }: SidebarTeacherProps) {
     return (
-        <>
-            <aside className="w-70 bg-primary text-secondary px-4 flex flex-col justify-between">
-                <div className="pt-5 flex flex-col gap-3">
-                    <Link to="/" className="font-semibold text-4xl text-secondary flex justify-center items-center gap-1 mb-5" aria-label="InsightQuiz"><Icon icon="andrsrxn:lightbulb-sparkle" width={40} height={40} /> InsightQuiz</Link>
-                    <NavLink to="/teacher/dashboard" className={({isActive}) => `px-4 transition-colors flex items-center gap-4 hover:bg-accent ${isActive ? "bg-accent" : ""} py-2 font-semibold text-lg`}><Icon icon="basil:chart-pie-outline" width={30} height={30} />Dashboard</NavLink>                    
-                    <NavLink to="/teacher/quiz-library" className={({isActive}) => `px-4 transition-colors flex items-center gap-4 hover:bg-accent ${isActive ? "bg-accent" : ""} py-2 font-semibold text-lg`}><Icon icon="iconoven:exam" width={30} height={30} />Quiz Library</NavLink>
-                    <NavLink to="/teacher/subjects" className={({isActive}) => `px-4 transition-colors flex items-center gap-4 hover:bg-accent ${isActive ? "bg-accent" : ""} py-2 font-semibold text-lg`}><Icon icon="akar-icons:tag" width={30} height={30} />Subjects</NavLink>
-                    <NavLink to="/teacher/classes" className={({isActive}) => `px-4 transition-colors flex items-center gap-4 hover:bg-accent ${isActive ? "bg-accent" : ""} py-2 font-semibold text-lg`}><Icon icon="akar-icons:home-alt1" width={30} height={30} />Classes</NavLink>
-                    <NavLink to="/teacher/students" className={({isActive}) => `px-4 transition-colors flex items-center gap-4 hover:bg-accent ${isActive ? "bg-accent" : ""} py-2 font-semibold text-lg`}><Icon icon="akar-icons:people-group" width={30} height={30} />Students</NavLink>
-                    <NavLink to="/teacher/analytics" className={({isActive}) => `px-4 transition-colors flex items-center gap-4 hover:bg-accent ${isActive ? "bg-accent" : ""} py-2 font-semibold text-lg`}><Icon icon="carbon:data-analytics" width={30} height={30} />Analytics</NavLink>
+        <aside
+            className={`fixed inset-y-0 left-0 z-40 w-72 shrink-0 bg-primary text-secondary px-4 flex flex-col justify-between overflow-y-auto transition-transform duration-200 ease-in-out lg:static lg:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
+                }`}
+        >
+            <div className="pt-5 flex flex-col gap-3">
+                <div className="flex items-center justify-between mb-5 lg:justify-center">
+                    <Link
+                        to="/"
+                        onClick={onClose}
+                        className="font-semibold text-3xl sm:text-4xl text-secondary flex items-center gap-1"
+                        aria-label="InsightQuiz"
+                    >
+                        <Icon icon="andrsrxn:lightbulb-sparkle" width={36} height={36} />
+                        <span>InsightQuiz</span>
+                    </Link>
+
+                    <button
+                        type="button"
+                        onClick={onClose}
+                        className="p-2 rounded-md hover:bg-accent lg:hidden"
+                        aria-label="Close sidebar"
+                    >
+                        <Icon icon="mdi:close" width={24} height={24} />
+                    </button>
                 </div>
-                <div className="flex flex-col gap-3 pb-10">
-                    <NavLink to="/teacher/account" className={({isActive}) => `px-4 transition-colors flex items-center gap-4 hover:bg-accent ${isActive ? "bg-accent" : ""} py-2 font-semibold text-lg`}><Icon icon="ic:outline-account-circle" width={30} height={30} />Account</NavLink>
-                    <Link to="/logout" className="px-4 transition-colors flex items-center gap-4 hover:bg-red-400 py-2 font-semibold text-lg"><Icon icon="mdi:logout" width={30} height={30} />Log out</Link>
-                </div>
-            </aside>
-        </>
-    )
+
+                <NavLink to="/teacher/dashboard" onClick={onClose} className={navClass}>
+                    <Icon icon="basil:chart-pie-outline" width={28} height={28} />
+                    <span>Dashboard</span>
+                </NavLink>
+                <NavLink to="/teacher/quiz-library" onClick={onClose} className={navClass}>
+                    <Icon icon="iconoven:exam" width={28} height={28} />
+                    <span>Quiz Library</span>
+                </NavLink>
+                <NavLink to="/teacher/subjects" onClick={onClose} className={navClass}>
+                    <Icon icon="akar-icons:tag" width={28} height={28} />
+                    <span>Subjects</span>
+                </NavLink>
+                <NavLink to="/teacher/classes" onClick={onClose} className={navClass}>
+                    <Icon icon="akar-icons:home-alt1" width={28} height={28} />
+                    <span>Classes</span>
+                </NavLink>
+                <NavLink to="/teacher/students" onClick={onClose} className={navClass}>
+                    <Icon icon="akar-icons:people-group" width={28} height={28} />
+                    <span>Students</span>
+                </NavLink>
+                <NavLink to="/teacher/analytics" onClick={onClose} className={navClass}>
+                    <Icon icon="carbon:data-analytics" width={28} height={28} />
+                    <span>Analytics</span>
+                </NavLink>
+            </div>
+
+            <div className="flex flex-col gap-3 py-6">
+                <NavLink to="/teacher/account" onClick={onClose} className={navClass}>
+                    <Icon icon="ic:outline-account-circle" width={28} height={28} />
+                    <span>Account</span>
+                </NavLink>
+                <Link
+                    to="/logout"
+                    onClick={onClose}
+                    className="px-4 transition-colors flex items-center gap-4 hover:bg-red-400 py-2 font-semibold text-lg rounded-md"
+                >
+                    <Icon icon="mdi:logout" width={28} height={28} />
+                    <span>Log out</span>
+                </Link>
+            </div>
+        </aside>
+    );
 }

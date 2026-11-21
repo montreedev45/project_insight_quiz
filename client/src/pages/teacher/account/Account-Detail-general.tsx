@@ -4,12 +4,12 @@ import account from '../../../assets/account.svg'
 export default function AccountDetailGeneral() {
     return (
         <>
-            <div className="flex justify-center items-center gap-50 min-w-[900px]">
+            <div className="flex flex-col xl:flex-row justify-center items-center gap-20 xl:gap-40">
                 <div className='gap-5 flex flex-col justify-center'>
                     <img src={account} alt="profile image" className='border-2 border-subtext rounded-full min-w-[200px]' width={200} height={200} />
                     <button type="submit" className="flex items-center justify-center border-2 border-subtext font-semibold text-subtext h-fit px-5 py-1 rounded-lg"><Icon icon="mdi:plus" className="text-subtext" width={25} height={25} />Upload</button>
                 </div>
-                <div className="flex flex-col gap-5 font-semibold w-full">
+                <div className="flex flex-col gap-5 font-semibold w-full min-w-full xl:min-w-[500px]">
                     <div className="flex gap-4 justify-between items-center">
                         <span className="w-fit whitespace-nowrap">First Name :</span>
                         <input type="text" value="Montri" className="font-normal px-4 py-1 w-full border border-subtext rounded-lg" />
@@ -24,7 +24,7 @@ export default function AccountDetailGeneral() {
                         <span className="w-fit whitespace-nowrap">Institution :</span>
                         <input type="text" value="School 1" className="font-normal px-4 py-1 w-full border border-subtext rounded-lg" />
                     </div>
-                    <div className="flex justify-between gap-3">
+                    <div className="flex flex-wrap justify-between gap-3">
                         <span className="w-fit whitespace-nowrap">Email :  <span className="font-normal ps-3">Teacher1@gmail.com</span></span>
                         <button className="flex items-center font-semibold text-sm text-secontext gap-2 px-4 rounded-sm bg-subtext">
                             <Icon icon="mdi:email-edit-outline" width={15} height={15} />

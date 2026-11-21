@@ -20,13 +20,13 @@ export default function ClassesDetail() {
                     <p className="text-lg font-semibold">M.4/1</p>
                 </div>
                 <div className="border h-[700px] rounded-lg">
-                    <div className="grid border-b-0 rounded-t-lg border-heading grid-cols-4 font-semibold bg-gray-200">
-                        <NavLink to={`/teacher/classes/${classId}/general`} className={({ isActive }) => `${isActive ? "text-accent bg-white border-e" : "border-b border-e"} py-2 px-10 rounded-tl-lg border-heading`}>General</NavLink>
-                        <NavLink to={`/teacher/classes/${classId}/subjects`} className={({ isActive }) => `${isActive ? "text-accent  bg-white border-e" : "border-e border-b"} py-2 px-10 border-heading`}>Subjects</NavLink>
-                        <NavLink to={`/teacher/classes/${classId}/quiz`} className={({ isActive }) => `${isActive ? "text-accent bg-white border-e" : "border-e border-b"} py-2 px-10 border-heading`}>Quiz</NavLink>
-                        <NavLink to={`/teacher/classes/${classId}/students`} className={({ isActive }) => `${isActive ? "text-accent bg-white" : "border-b"} py-2 px-10 rounded-tr-lg border-heading`}>Students</NavLink>
+                    <div className="grid border-b-0 rounded-t-lg border-heading grid-cols-4 font-semibold text-sm bg-gray-200">
+                        <NavLink to={`/teacher/classes/${classId}/general`} className={({ isActive }) => `${isActive ? "text-accent bg-white border-e" : "border-b border-e"} py-2 px-2  md:px-10 rounded-tl-lg border-heading`}>General</NavLink>
+                        <NavLink to={`/teacher/classes/${classId}/subjects`} className={({ isActive }) => `${isActive ? "text-accent  bg-white border-e" : "border-e border-b"} py-2 px-2  md:px-10 border-heading`}>Subjects</NavLink>
+                        <NavLink to={`/teacher/classes/${classId}/quiz`} className={({ isActive }) => `${isActive ? "text-accent bg-white border-e" : "border-e border-b"} py-2 px-2  md:px-10 border-heading`}>Quiz</NavLink>
+                        <NavLink to={`/teacher/classes/${classId}/students`} className={({ isActive }) => `${isActive ? "text-accent bg-white" : "border-b"} py-2 px-2  md:px-10 rounded-tr-lg border-heading`}>Students</NavLink>
                     </div>
-                    <div className="p-20 flex justify-center">
+                    <div className="py-20 px-10 flex justify-center">
                         <Outlet />
                     </div>
                 </div>

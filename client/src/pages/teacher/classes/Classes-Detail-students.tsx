@@ -4,10 +4,10 @@ import account from '../../../assets/account.svg'
 export default function ClassesDetailStudents() {
     return (
         <>
-            <div className="min-w-[1000px] overflow-x-auto">
-                <table className="w-full border-collapse">
+            <div className="w-full overflow-x-auto max-w-[800px]">
+                <table className="w-full min-w-[600px]">
                     <thead>
-                        <tr className="border border-secondary bg-subtext text-left">
+                        <tr className="border border-secondary bg-subtext text-left whitespace-nowrap">
                             <th className="border border-secondary px-10 py-3 text-center">Profile</th>
                             <th className="border border-secondary px-20 py-3">ID</th>
                             <th className="border border-secondary px-10 py-3">First Name</th>

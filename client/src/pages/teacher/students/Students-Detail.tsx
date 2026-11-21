@@ -21,20 +21,44 @@ export default function StudentsDetail() {
                 </div>
                 <div className="flex flex-col gap-5 px-5">
                     <span className="font-semibold text-xl">Personal Information</span>
-                    <div className='flex flex-wrap gap-10 w-full'>
-                        <div className='border-2 rounded-2xl border-subtext py-5 px-20 flex justify-center'>
-                            <img src={account} alt="profile image" className='border-2 border-subtext rounded-full' width={150} height={150} />
+                    <div className="grid grid-cols-1 lg:grid-cols-3 w-full transition-all gap-10 duration-300">
+                        <div className="border-2 rounded-2xl border-subtext flex justify-center items-center p-6">
+                            <img
+                                src={account}
+                                alt="profile image"
+                                className="rounded-full w-[150px] h-[150px] object-cover"
+                            />
                         </div>
-                        <div className='flex justify-center items-center gap-30 border-2 rounded-2xl border-subtext grow'>
-                            <div className='flex flex-col gap-5 text-lg font-semibold'>
-                                <span className='flex gap-3'>ID : <span className='font-normal'>0123456789</span></span>
-                                <span className='flex gap-3'>First Name : <span className='font-normal'>montree</span></span>
-                                <span className='flex gap-3'>Last Name : <span className='font-normal'>chanuaklang</span></span>
+
+                        <div className="flex flex-col xl:flex-row lg:col-span-2 justify-center items-start xl:items-center gap-5 p-10 xl:gap-16 border-2 rounded-2xl border-subtext min-w-0">
+                            <div className="flex flex-col gap-4 text-base font-semibold">
+                                <span className="flex flex-wrap gap-2">
+                                    <span>ID :</span>
+                                    <span className="font-normal">0123456789</span>
+                                </span>
+                                <span className="flex flex-wrap gap-2">
+                                    <span>First Name :</span>
+                                    <span className="font-normal">montree</span>
+                                </span>
+                                <span className="flex flex-wrap gap-2">
+                                    <span>Last Name :</span>
+                                    <span className="font-normal">chanuaklang</span>
+                                </span>
                             </div>
-                            <div className='flex flex-col gap-5 text-lg font-semibold'>
-                                <span className='flex gap-3'>Email : <span className='font-normal'>abc@gmail.com</span></span>
-                                <span className='flex gap-3'>Quiz Taken : <span className='font-normal'>10</span></span>
-                                <span className='flex gap-3'>Avg. Score (%) :<span className='font-normal'>80</span></span>
+
+                            <div className="flex flex-col gap-4 text-base font-semibold">
+                                <span className="flex flex-wrap gap-2">
+                                    <span>Email :</span>
+                                    <span className="font-normal break-all">abc@gmail.com</span>
+                                </span>
+                                <span className="flex flex-wrap gap-2">
+                                    <span>Quiz Taken :</span>
+                                    <span className="font-normal">10</span>
+                                </span>
+                                <span className="flex flex-wrap gap-2">
+                                    <span>Avg. Score (%) :</span>
+                                    <span className="font-normal">80</span>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -42,9 +66,9 @@ export default function StudentsDetail() {
                 <div className="flex flex-col gap-5 px-5">
                     <div className='flex justify-between p-5 gap-10 w-full rounded-2xl border-2 border-subtext '>
                         <div className='flex flex-col w-full'>
-                            <div className='flex justify-between gap-5'>
+                            <div className='flex flex-col sm:flex-row justify-between gap-5'>
                                 <span className="font-semibold text-xl">Performance</span>
-                                <div className='flex gap-5'>
+                                <div className='flex gap-5 justify-end'>
                                     <div className="bg-gray-300 text-heading py-1.5 px-2 rounded-lg caret-transparent">
                                         <select name="subject" id="" className="bg-gray-300 outline-0 border-0 px-4 font-semibold">
                                             <option value="" className="" selected>math</option>
@@ -57,9 +81,9 @@ export default function StudentsDetail() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='w-full flex justify-center gap-20'>
-                                <img src={performance} alt="" width={320} height={320} />
-                                <img src={performance} alt="" width={320} height={320} />
+                            <div className='w-full flex flex-col lg:flex-row items-center justify-center gap-10 pt-10'>
+                                <img src={performance} alt="" width={280} height={280} />
+                                <img src={performance} alt="" width={280} height={280} />
                             </div>
                         </div>
                     </div>
